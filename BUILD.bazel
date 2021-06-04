@@ -1,0 +1,9 @@
+sh_binary(
+    name = "fennel",
+    srcs = ["@fennel//file"],
+)
+
+sh_binary(
+    name = "lua",
+    srcs = ["@lua//file"],
+)
