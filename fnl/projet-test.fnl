@@ -7,7 +7,7 @@
 (local cmd vim.cmd)
 (local v vim.fn)
 
-(local lyaml (require :lyaml))
+(local yaml (require :yaml))
 (local tap (require :tap))
 (local lume (require :lume))
 (local projet (require :projet))
@@ -17,8 +17,8 @@
 (fn assert-equal [msg expected actual]
   (set count (+ count 1))
   (local cnt count)
-
   (print (.. "# " msg))
+
   (fn f []
     (assert (= expected actual) {: expected : actual}))
 
@@ -29,14 +29,15 @@
              "\n")
     [false err] (do
                   (print (.. "not ok " count " " msg))
-                  (print (-> [err] (lyaml.dump)))))
+                  (print (-> [err] (yaml.dump)))))
   (print "\n"))
 
 (projet.init)
 
 (cmd "e fnl/projet.fnl")
 (cmd :ASpec)
-(assert-equal "changes to spec buffer fom src" :spec/projet_spec.fnl (v.bufname))
+(assert-equal "changes to spec buffer fom src" :spec/projet_spec.fnl
+              (v.bufname))
 
 (cmd :ASrc)
 (assert-equal "changes to src buffer from spec" :fnl/projet.fnl (v.bufname))

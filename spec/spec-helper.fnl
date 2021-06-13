@@ -1,6 +1,6 @@
 (local helpers {})
 
-(fn helpers.desc [str ...]
+(fn helpers.describe [str ...]
    `(describe ,str (fn [] ,...)))
 
 (fn helpers.it [str ...]

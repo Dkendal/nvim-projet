@@ -1,9 +1,11 @@
+load("//tools:fennel.bzl", "fennel_project")
+
 sh_binary(
     name = "fennel",
     srcs = ["@fennel//file"],
 )
 
-sh_binary(
-    name = "lua",
-    srcs = ["@lua//file"],
+fennel_project(
+    name = "nvim-projet.fnl",
+    srcs = glob(["fnl/**/*.fnl"]),
 )
