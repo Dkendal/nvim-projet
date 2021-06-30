@@ -10,9 +10,12 @@
 (fn tap.test [name callback]
   (set count (+ count 1))
   (local cnt count)
+
   (fn test []
     (-> (match [(pcall callback)]
-          [false err] (.. "not ok " cnt " - " name "\n# " (-> err (lume.split "\n") (table.concat "\n# ")))
+          [false err]
+          (.. "not ok " cnt " - " name "\n# " (-> err (lume.split "\n") (table.concat "
+# ")))
           [true] (.. "ok " cnt " - " name))
         (print)))
 

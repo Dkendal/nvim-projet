@@ -1,6 +1,9 @@
 [[rules]]
 name="Src"
 pattern="^fnl/(.*)%.fnl$"
+template="""
+Hello world!
+"""
 
 [[rules.links]]
 name="Spec"
